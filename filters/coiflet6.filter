@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+    $Id: coiflet6.filter,v 1.1 2006/02/22 12:49:35 xander Exp $
+-->
+<filter id="coiflet6" name="Coiflet C6" type="orthogonal">
+    <info>
+        Coiflet C6 filter.
+    </info>
+    <primary causality="anticausal">
+        0.038580777748
+       -0.126969125396
+       -0.077161555496
+        0.607491641386
+        0.745687558934
+        0.226584265197
+    </primary>
+</filter>

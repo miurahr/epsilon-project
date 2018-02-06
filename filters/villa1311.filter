@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+    $Id: villa1311.filter,v 1.1 2006/02/22 12:49:35 xander Exp $
+-->
+<filter id="villa1311" name="Villasenor 13/11" type="biorthogonal">
+    <info>
+        Filter from J. Villasenor, B. Belzer, J. Liao, "Wavelet Filter
+        Evaluation for Image Compression." IEEE Transactions on Image
+        Processing, Vol. 2, pp. 1053-1060, August 1995.
+    </info>
+    <primary causality="symmetric_whole">
+        0.7672451593927493
+        0.3832692613243884
+       -0.0688781141906103
+       -0.0334750810478015
+        0.0472817528288275
+        0.0037592103166868
+       -0.0084728277413181
+    </primary>
+    <dual causality="symmetric_whole">
+        0.8328475700934288
+        0.4481085999263908
+       -0.0691627101203004
+       -0.1087373652243805
+        0.0062923156668598
+        0.0141821558912635
+    </dual>
+</filter>

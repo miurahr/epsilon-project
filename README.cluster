@@ -1,0 +1,26 @@
+[Running EPSILON cluster]
+
+1. Build EPSILON with cluster support (see INSTALL for details)
+
+2. Run `epsilon --start-node' on each SLAVE node. Default port 2718
+   can be changed using `--port' option. EPSILON node daemon logs
+   messages to syslog using `daemon' facility.
+
+3. Create file with list of cluster nodes on MASTER server.
+   File format: user@host:port^number_of_CPUs
+
+   host - EPSILON node's hostname or IP
+   port - EPSILON node's port
+   number_of_CPUs - number of simultaneous connections to that SLAVE node
+   user - SSH login (used by start_epsilon_nodes.pl and stop_epsilon_nodes.pl)
+
+4. Run epsilon from MASTER server as usual but pass `--node-list' option.
+   Check logs on SLAVE nodes.
+
+5. There are several default places for epsilon.nodes file.
+   Please consult manual on this matter
+
+6. There are two helper script start_epsilon_nodes.pl and stop_epsilon_nodes.pl
+   that can be used to simplify starting/stopping EPSILON nodes.
+   These script run `epsilon --start-node' on hosts, listed in
+   epsilon.nodes file using DSH - Distributed SHell.

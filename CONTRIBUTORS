@@ -1,0 +1,8 @@
+* Alessandro Furieri <a.furieri@lqt.it>
+  - a lot of improvements to code portability
+  - porting to Windows (MSVC, MinGW)
+  - bug fixes: name clash with zlib & libpng
+  - fluff removal from the code
+* Francesco P. Lovergine <frankie at debian dot org> from DebianGis project
+  - Maintaining epsilon, libepsilon and GDAL epsilon driver for Debian
+  - Adding versioning support to libepsilon

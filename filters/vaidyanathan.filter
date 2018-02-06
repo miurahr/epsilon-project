@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+    $Id: vaidyanathan.filter,v 1.1 2006/02/22 12:49:35 xander Exp $
+-->
+<filter id="vaidyanathan" name="Vaidyanathan" type="orthogonal">
+    <info>
+        The Vaidyanathan filter gives an exact reconstruction, but does not
+        satisfy any moment condition.  The filter has been optimized for
+        speech coding.
+    </info>
+    <primary causality="anticausal">
+       -0.000062906118
+        0.000343631905
+       -0.000453956620
+       -0.000944897136
+        0.002843834547
+        0.000708137504
+       -0.008839103409
+        0.003153847056
+        0.019687215010
+       -0.014853448005
+       -0.035470398607
+        0.038742619293
+        0.055892523691
+       -0.077709750902
+       -0.083928884366
+        0.131971661417
+        0.135084227129
+       -0.194450471766
+       -0.263494802488
+        0.201612161775
+        0.635601059872
+        0.572797793211
+        0.250184129505
+        0.045799334111
+    </primary>
+</filter>

@@ -1,0 +1,3 @@
+INCLUDES =
+METASOURCES = AUTO
+dist_noinst_DATA = PSNR.pm

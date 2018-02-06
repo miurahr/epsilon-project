@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+    $Id: haar.filter,v 1.1 2006/02/22 12:49:35 xander Exp $
+-->
+<filter id="haar" name="Haar" type="orthogonal">
+    <info>
+        Haar filter.
+    </info>
+    <primary causality="anticausal">
+        0.7071067811865475
+        0.7071067811865475
+    </primary>
+</filter>

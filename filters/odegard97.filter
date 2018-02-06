@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+    $Id: odegard97.filter,v 1.1 2006/02/22 12:49:35 xander Exp $
+-->
+<filter id="odegard97" name="Odegard 9/7" type="biorthogonal">
+    <info>
+        Odegard's 9/7 filter.
+    </info>
+    <primary causality="symmetric_whole">
+        0.7875137715277921
+        0.3869718638726204
+       -0.0930692637035827
+       -0.0334184732793468
+        0.0528657685329605
+    </primary>
+    <dual causality="symmetric_whole">
+        0.8167806349921064
+        0.4403017067249854
+       -0.0548369269027794
+       -0.0867483161317116
+    </dual>
+</filter>

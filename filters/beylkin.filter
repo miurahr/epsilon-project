@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+    $Id: beylkin.filter,v 1.1 2006/02/22 12:49:35 xander Exp $
+-->
+<filter id="beylkin" name="Beylkin" type="orthogonal">
+    <info>
+        The Beylkin filter places roots for the frequency response function
+        close to the Nyquist frequency on the real axis.
+    </info>
+    <primary causality="anticausal">
+        0.099305765374
+        0.424215360813
+        0.699825214057
+        0.449718251149
+       -0.110927598348
+       -0.264497231446
+        0.026900308804
+        0.155538731877
+       -0.017520746267
+       -0.088543630623
+        0.019679866044
+        0.042916387274
+       -0.017460408696
+       -0.014365807969
+        0.010040411845
+        0.001484234782
+       -0.002736031626
+        0.000640485329
+    </primary>
+</filter>

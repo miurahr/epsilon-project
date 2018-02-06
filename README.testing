@@ -1,0 +1,25 @@
+[Running EPSILON tests]
+
+As of release 0.9.1 EPSILON has a test suite written in Perl.
+
+1. Install required Perl modules
+
+- Readonly
+- Params::Validate
+- Test::Exception
+
+2. Install required external packages
+
+- netpbm
+
+3. Prepare at least one EPSILON build (generic, pthreads, cluster, mpi)
+   using scripts from the tests/build directory of source tree.
+
+4. Run tests
+
+    prove -v tests/t/*.t
+
+Some tests (e.g. verification.t) are very long and can take several hours to complete.
+Each test (*.t) has a description in the begining of a file. You can check it out.
+
+Your test reports either successful or unsuccessful are welcome.

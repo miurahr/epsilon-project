@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+    $Id: symmlet12.filter,v 1.1 2006/02/22 12:49:35 xander Exp $
+-->
+<filter id="symmlet12" name="Symmlet S12" type="orthogonal">
+    <info>
+        Symmlets are wavelets within a minimum size support for a given 
+        number of vanishing moments, but they are as symmetrical as possible,
+        as opposed to the Daubechies filters which are highly asymmetrical.
+    </info>
+    <primary causality="anticausal">
+        0.015404109327339
+        0.003490712084331
+       -0.117990111148417
+       -0.048311742586001
+        0.491055941927666
+        0.787641141028836
+        0.337929421728258
+       -0.072637522786604
+       -0.021060292512697
+        0.044724901770751
+        0.001767711864398
+       -0.007800708324765
+    </primary>
+</filter>

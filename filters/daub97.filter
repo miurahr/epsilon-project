@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+    $Id: daub97.filter,v 1.1 2006/02/22 12:49:35 xander Exp $
+-->
+<filter id="daub97" name="Daubechies 9/7" type="biorthogonal">
+    <info>
+        9/7 filter from M. Antonini, M. Barlaud, P. Mathieu, and
+        I. Daubechies, "Image coding using wavelet transform", IEEE
+        Transactions on Image Processing, Vol. pp. 205-220, 1992.
+    </info>
+    <primary causality="symmetric_whole">
+        0.8526986790088938
+        0.3774028556128306
+       -0.1106244044184372
+       -0.0238494650195568
+        0.0378284555072640
+    </primary>
+    <dual causality="symmetric_whole">
+        0.7884856164063712
+        0.4180922732220353
+       -0.0406894176092047
+       -0.0645388826287616
+    </dual>
+</filter>

@@ -1,0 +1,97 @@
+[Building EPSILON]
+
+    First of all, if you are not familiar with Autoconf/Automake building
+    system please read INSTALL.generic first. This file contains generic
+    instructions on building software packages.
+
+    In most cases building EPSILON is trivial:
+
+    $ tar -xzvf epsilon-X.Y.Z.tar.gz
+    $ cd epsilon-X.Y.Z
+    $ ./configure
+    $ make
+    # make install
+    # ldconfig
+
+    The only one external dependency required is libpopt. The POPT library
+    is a very handy tool for parsing command-line options. This library is
+    commonly used as a replacement for standard getopt facility.
+
+    If configure script fails to find libpopt you should download and
+    install it before building EPSILON. If you have libpopt installed
+    but configure complains about missing libpopt dependency, check for
+    the `popt.h' header in standard include directories: it is a common
+    practice to separate development packages from commonly-used user
+    packages. For example, if you have RPM-based Linux system try
+    to install `libpopt-devel' package, on Debian - libpopt-dev.
+
+    After installing EPSILON don`t forget to edit your /etc/ld.so.conf
+    and run ldconfig to update system cache of shared libraries.
+
+[Multi-threading support]
+
+    As of release 0.5.1 EPSILON comes with multi-threading support.
+    That`s really cool if you have SMP machine or at least a computer
+    with multicore CPU! The actual threading backend is POSIX threads
+    or Pthreads for short. So, in order to build multi-threaded
+    EPSILON version you have to have Pthreads on you system. I think
+    it`s not a big problem today: the vast majority of morden Unix-like
+    OS-es already have Pthread support.
+
+    Assuming you have Pthreads on you system pass the `--enable-pthreads'
+    option to configure script. Also, you can specify default and maximal
+    number of threads used by EPSILON:
+
+    $ ./configure --enable-pthreads \
+		  --with-def-threads=4 \
+		  --with-max-threads=32
+
+[Clustering support]
+
+    As of release 0.6.1 EPSILON supports clustering mode. This is a
+    very powerful feature if you have several machines linked with a
+    high-capacity network, say gigabit ethernet or even faster.
+
+    To build cluster-aware EPSILON version you should pass special
+    option to configure script. Namely `--enable-cluster':
+
+    $ ./configure --enable-pthreads --enable-cluster
+
+    Note that cluster-aware EPSILON version also relies on threads,
+    so POSIX threads support is required. Nevertheless `--with-def-threads'
+    and `--with-max-threads' options are not applicable here.
+
+[MPI support]
+
+    As of release 0.7.1 EPSILON supports MPI - Message Passing Interface.
+    MPI is the well-known industry standard for effective and portable
+    parallel programming.
+
+    To build MPI version of EPSILON you should pass `--enable-mpi' option
+    to the configure script and specify MPI compiler wrapper. On most
+    systems this wrapper is called `mpicc':
+
+    $ ./configure --enable-mpi CC=mpicc
+
+    Note that EPSILON/MPI requires a working and configured MPI
+    installation, MPI development libraries and headers.
+
+[Set validation]
+
+    For debug and development purposes one can enable a feature
+    called "set validation". With this option turned on the program
+    will strictly validate SPECK coding correctness. By default this
+    feature is disabled. Use `--enable-set-validation' to enable it.
+
+[Building from CVS]
+
+    Checkout latest version from CVS repository:
+
+    $ cvs -z3 -d:pserver:anonymous@epsilon-project.cvs.sourceforge.net:/cvsroot/epsilon-project checkout -P epsilon
+
+    Generate ./configure script
+
+    $ cd epsilon
+    $ make -f Makefile.cvs
+
+    The rest is identical to what is said in "Building EPSILON" section

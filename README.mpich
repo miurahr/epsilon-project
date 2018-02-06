@@ -1,0 +1,40 @@
+[Running MPI-enabled EPSILON version]
+
+This example describes configuration of MPICH on Debian Lenny.
+If you have another MPI implementation or different system,
+please adjust instructions below to fit your needs. In the latter
+cases your short HOW-TOs are welcome!
+
+1. Install MPICH
+
+    apt-get install mpich-bin libmpich1.0-dev mpi-doc 
+
+2. Build EPSILON with MPI support (see INSTALL for details)
+
+3. Configure MPI environment (simplest case follows):
+
+    3.1 Edit machines file: /etc/mpich/machines.LINUX:
+        ==8<==
+        # <cluster node's hostname or IP>:<number of CPUs (not required)>
+        localhost
+        ==8<==
+
+    3.2 Generate SSH keys and put MASTER's public key into the ~/.ssh/authorized_keys
+        file on each SLAVE cluster node: mpirun script will run epsilon's binary
+        using SSH on each of them multiple times - one process for each
+        processor you requested. Leave pass-phrase empty:
+
+        Example: ssh-keygen -b 1024 -t rsa
+
+    3.3 Check connectivity to all SLAVE cluster nodes:
+        tstmachines -v
+        Trying true on localhost ...
+        Trying ls on localhost ...
+        Trying user program on localhost ...
+
+4. Install EPSILON on each SLAVE cluster node (into the same location
+   or accessible via $PATH) or configure NFS or alike for that purpose.
+
+5. Run EPSILON from MASTER node (using 32 processors):
+
+    mpirun -v -np 32 /path/to/epsilon /path/to/image_on_master_node.pgm

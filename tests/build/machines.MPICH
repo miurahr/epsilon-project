@@ -1,0 +1,3 @@
+# Sample machines file for testing MPI version of EPSILON
+# <cluster node's hostname or IP>:<number of CPUs (not required)>
+localhost

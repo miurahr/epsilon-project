@@ -1,0 +1,78 @@
+# $Id: makefile.vc,v 1.1 2010/03/19 22:57:28 simakov Exp $
+#
+# NMAKE Makefile to build EPSILON on Windows
+# Written by Sandro Furieri
+#
+!INCLUDE nmake.opt
+
+OBJ_EXT = obj
+EXT = $(OBJ_EXT)
+
+LIBOBJ = lib\bit_io.$(EXT) lib\checksum.$(EXT) \
+	lib\cobs.$(EXT) lib\color.$(EXT) lib\common.$(EXT) \
+	lib\dc_level.$(EXT) lib\filter.$(EXT) \
+	lib\filterbank.$(EXT) lib\libmain.$(EXT) \
+	lib\list.$(EXT) lib\mem_alloc.$(EXT) \
+	lib\merge_split.$(EXT) lib\pad.$(EXT) \
+	lib\resample.$(EXT) lib\speck.$(EXT)
+EPSILON_DLL 	       =	epsilon$(VERSION).dll
+EPSILON_EXE            =    epsilon.exe
+
+CFLAGS	=	/nologo -IC:\OSGeo4W\include -I.\lib -I.\lib\msvc \
+			-I.\src -I..\popt\include \
+			$(OPTFLAGS)
+
+default:	all
+
+all: epsilon.lib epsilon_i.lib $(EPSILON_EXE) 
+
+epsilon.lib:	$(LIBOBJ)
+	if exist epsilon.lib del epsilon.lib
+	lib /out:epsilon.lib $(LIBOBJ)
+
+$(EPSILON_DLL):	epsilon_i.lib
+
+epsilon_i.lib:	$(LIBOBJ)
+	link /debug /dll /def:libepsilon.def /out:$(EPSILON_DLL) \
+		/implib:epsilon_i.lib $(LIBOBJ) 
+	if exist $(EPSILON_DLL).manifest mt -manifest \
+		$(EPSILON_DLL).manifest -outputresource:$(EPSILON_DLL);2
+
+$(EPSILON_EXE): $(EPSILON_DLL) src\epsilon.obj \
+		src\cmd_version.obj src\cmd_list_all_fb.obj \
+		src\cmd_truncate_file.obj src\cmd_decode_file.obj \
+		src\cmd_encode_file.obj src\misc.obj \
+		src\psi.obj src\pbm.obj
+	cl src\epsilon.obj $(LIBOBJ) \
+		src\cmd_version.obj src\cmd_list_all_fb.obj \
+		src\cmd_truncate_file.obj src\cmd_decode_file.obj \
+		src\cmd_encode_file.obj src\misc.obj \
+		src\psi.obj src\pbm.obj \
+		..\popt\lib\libpopt.lib
+		/Fe$(EPSILON_EXE)
+	if exist $(EPSILON_EXE).manifest mt -manifest \
+		$(EPSILON_EXE).manifest -outputresource:$(EPSILON_EXE);1
+	
+.c.obj:
+	$(CC) $(CFLAGS) /c $*.c /Fo$@
+
+clean:
+	del *.dll
+	del *.exp
+	del *.manifest
+	del *.lib
+	del lib\*.obj
+	del src\*.obj
+	del *.exe
+	del *.pdb
+
+install: all
+	-mkdir $(INSTDIR)
+	-mkdir $(INSTDIR)\bin
+	-mkdir $(INSTDIR)\lib
+	-mkdir $(INSTDIR)\include
+	copy *.dll $(INSTDIR)\bin
+	copy *.lib $(INSTDIR)\lib
+	copy *.exe $(INSTDIR)\bin
+	copy lib\epsilon.h $(INSTDIR)\include
+	

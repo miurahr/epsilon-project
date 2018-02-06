@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+    $Id: cdf93.filter,v 1.1 2006/02/22 12:49:35 xander Exp $
+-->
+<filter id="cdf93" name="Cohen Daubechies Feauveau 9/3" type="biorthogonal">
+    <info>
+        A. Cohen, I. Daubechies, J. C. Feauveau, "Biorthogonal Bases of
+        Compactly Supported Wavelets," Communications on Pure and
+        Applied Mathematics, vol. 45, no. 5, pp. 485-560, May 1992.
+    </info>
+    <primary causality="symmetric_whole">
+        0.99436891104360
+        0.41984465132952
+       -0.17677669529665
+       -0.06629126073624
+        0.03314563036812
+    </primary>
+    <dual causality="symmetric_whole">
+        0.70710678118655
+        0.35355339059327
+    </dual>
+</filter>

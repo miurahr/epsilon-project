@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+    $Id: daub20.filter,v 1.1 2006/02/22 12:49:35 xander Exp $
+-->
+<filter id="daub20" name="Daubechies D20" type="orthogonal">
+    <info>
+        I. Daubechies, "Orthonormal Bases of Compactly Supported Wavelets,"
+        Communications on Pure and Applied Mathematics, vol. 41,
+        pp. 909-996, 1988.
+    </info>
+    <primary causality="anticausal">
+        0.026670057901
+        0.188176800078
+        0.527201188932
+        0.688459039454
+        0.281172343661
+       -0.249846424327
+       -0.195946274377
+        0.127369340336
+        0.093057364604
+       -0.071394147166
+       -0.029457536822
+        0.033212674059
+        0.003606553567
+       -0.010733175483
+        0.001395351747
+        0.001992405295
+       -0.000685856695
+       -0.000116466855
+        0.000093588670
+       -0.000013264203
+    </primary>
+</filter>
