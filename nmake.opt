@@ -1,9 +1,24 @@
 # Directory tree where EPSILON will be installed.
 INSTDIR=C:\OSGeo4W
 
-# Uncomment the first for an optimized build, or the second for debug.
-OPTFLAGS=	/nologo /Ox /fp:precise /W3 /MD /D_CRT_SECURE_NO_WARNINGS 
-#OPTFLAGS=	/nologo /Zi /MD /Fdepsilon.pdb
+# Flags to choose CRT variant to link against (e.g. static: /MT, /MTd, dynamic: /MD, /MDd)
+!IFNDEF LINKAGE_FLAGS
+!IFNDEF DEBUG
+LINKAGE_FLAGS=/MD
+!ELSE
+LINKAGE_FLAGS=/MDd
+!ENDIF
+!ENDIF
+
+C_PDB_FLAGS=/Zi /Fdepsilon.pdb
+
+!IFNDEF OPTFLAGS
+!IFNDEF DEBUG
+OPTFLAGS=	$(C_PDB_FLAGS) /nologo /Ox /fp:precise /W3 $(LINKAGE_FLAGS) /D_CRT_SECURE_NO_WARNINGS /D_CRT_SECURE_NO_DEPRECATE /D_CRT_NONSTDC_NO_DEPRECATE /DNDEBUG
+!ELSE
+OPTFLAGS=	$(C_PDB_FLAGS) /nologo $(LINKAGE_FLAGS) /EHsc /D_CRT_SECURE_NO_DEPRECATE /D_CRT_NONSTDC_NO_DEPRECATE /DDEBUG
+!ENDIF
+!ENDIF
 
 # Set the version number for the DLL.  Normally we leave this blank since
 # we want software that is dynamically loading the DLL to have no problem
