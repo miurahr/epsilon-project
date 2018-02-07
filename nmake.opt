@@ -10,15 +10,34 @@ LINKAGE_FLAGS=/MDd
 !ENDIF
 !ENDIF
 
+# Flags for enforcing PDB use
+!IFNDEF C_PDB_FLAGS
 C_PDB_FLAGS=/Zi /Fdepsilon.pdb
+!ENDIF
+
+# Set flags controlling warnings level, and suppression of some warnings.
+!IFNDEF WARNFLAGS
+# 4127: conditional expression is constant
+# 4251: 'identifier' : class 'type' needs to have dll-interface to be used by clients of class 'type2'
+# 4275: non – DLL-interface classkey 'identifier' used as base for DLL-interface classkey 'identifier'
+# 4786: ??????????
+# 4100: 'identifier' : unreferenced formal parameter
+# 4245: 'conversion' : conversion from 'type1' to 'type2', signed/unsigned mismatch
+# 4206: nonstandard extension used : translation unit is empty (only applies to C source code)
+# 4351: new behavior: elements of array 'array' will be default initialized (needed for https://trac.osgeo.org/gdal/changeset/35593)
+# 4611: interaction between '_setjmp' and C++ object destruction is non-portable
+#
+WARNFLAGS =	/W3 /wd4127 /wd4251 /wd4275 /wd4786 /wd4100 /wd4245 /wd4206 /wd4351 /wd4611
+!ENDIF
 
 !IFNDEF OPTFLAGS
 !IFNDEF DEBUG
-OPTFLAGS=	$(C_PDB_FLAGS) /nologo /Ox /fp:precise /W3 $(LINKAGE_FLAGS) /D_CRT_SECURE_NO_WARNINGS /D_CRT_SECURE_NO_DEPRECATE /D_CRT_NONSTDC_NO_DEPRECATE /DNDEBUG
+OPTFLAGS=	$(C_PDB_FLAGS) /nologo /Ox /fp:precise $(LINKAGE_FLAGS) /D_CRT_SECURE_NO_WARNINGS /D_CRT_SECURE_NO_DEPRECATE /D_CRT_NONSTDC_NO_DEPRECATE /DNDEBUG
 !ELSE
 OPTFLAGS=	$(C_PDB_FLAGS) /nologo $(LINKAGE_FLAGS) /EHsc /D_CRT_SECURE_NO_DEPRECATE /D_CRT_NONSTDC_NO_DEPRECATE /DDEBUG
 !ENDIF
 !ENDIF
+
 
 # Set the version number for the DLL.  Normally we leave this blank since
 # we want software that is dynamically loading the DLL to have no problem

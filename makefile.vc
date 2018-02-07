@@ -20,7 +20,7 @@ EPSILON_EXE            =    epsilon.exe
 
 CFLAGS	=	/nologo -IC:\OSGeo4W\include -I.\lib -I.\lib\msvc \
 			-I.\src -I..\popt\include \
-			$(OPTFLAGS)
+			$(OPTFLAGS) $(WARNFLAGS)
 
 default:	all
 
